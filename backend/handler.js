@@ -3,8 +3,8 @@ const meetupLuckyWinnerGenerator = require('meetup-lucky-winner-generator');
 
 module.exports.generateOne = (event, context) => {
   const options = {
-    meetup: event.pathParameters.meetup,
-    eventId: event.pathParameters.eventId,
+    meetup: event.queryStringParameters.meetup,
+    eventId: event.queryStringParameters.eventId,
     apiKey: process.env.API_KEY
   };
   return meetupLuckyWinnerGenerator
@@ -22,8 +22,8 @@ module.exports.generateOne = (event, context) => {
 
 module.exports.generateThree = (event, context) => {
   const options = {
-    meetup: event.pathParameters.meetup,
-    eventId: event.pathParameters.eventId,
+    meetup: event.queryStringParameters.meetup,
+    eventId: event.queryStringParameters.eventId,
     apiKey: process.env.API_KEY
   };
   return meetupLuckyWinnerGenerator
@@ -41,9 +41,9 @@ module.exports.generateThree = (event, context) => {
 
 // module.exports.generateCustom = (event, context) => {
 //   const options = {
-//     meetup: event.pathParameters.meetup,
-//     eventId: event.pathParameters.eventId,
-//     numberOfWinners: event.pathParameters.numberOfWinners,
+//     meetup: event.queryStringParameters.meetup,
+//     eventId: event.queryStringParameters.eventId,
+//     numberOfWinners: event.queryStringParameters.numberOfWinners,
 //     apiKey: process.env.API_KEY
 //   };
 //   return meetupLuckyWinnerGenerator

@@ -25,14 +25,14 @@ functions:
     handler: handler.generateOne
     events:
       - http:
-          path: generate/one/{meetup}/{eventId}
+          path: generate/one
           method: get
           cors: true
   generateThree:
     handler: handler.generateThree
     events:
       - http:
-          path: generate/three/{meetup}/{eventId}
+          path: generate/three
           method: get
           cors: true
 
