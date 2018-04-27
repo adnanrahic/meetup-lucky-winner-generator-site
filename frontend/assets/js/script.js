@@ -260,9 +260,15 @@ function debounce(func, wait, immediate) {
 // custom
 var baseEndpoint = 'https://pzwmaw8exa.execute-api.us-east-1.amazonaws.com/dev/generate';
 
-var btnGenerateOne = document.getElementsByClassName('btn-generate-one')[0];
-btnGenerateOne.addEventListener('click', generateOne);
+var formOne = document.forms[0];
+// var btnGenerateOne = document.getElementsByClassName('btn-generate-one')[0];
+formOne.addEventListener('submit', generateOne);
 function generateOne(event) {
+    event.preventDefault();
+    // add loading animation
+    var generateOneResult = document.getElementById('generate-one-result');
+    generateOneResult.innerHTML = '<img src="assets/svg/audio.svg" height="100px" width="100px" style="position: relative;left: 50%;margin-left: -50px;" />';
+    
     // call api
     var meetupOne = document.getElementById('meetupOne');
     var eventIdOne = document.getElementById('eventIdOne');
@@ -272,14 +278,13 @@ function generateOne(event) {
         oneLuckyWinnerHtml += '<div class="col-sm-12">';
         oneLuckyWinnerHtml += '<p style="text-align: center">The Lucky Winner is...</p>';
         if (data.member.photo) {
-            oneLuckyWinnerHtml += '<img src="' + data.member.photo.thumb_link || 'assets/img/default-avatar.png' + '" height="100px" width="100px" style="position: relative;left: 50%;margin-left: -50px;">';
+            oneLuckyWinnerHtml += '<img src="' + data.member.photo.thumb_link + '" height="100px" width="100px" style="position: relative;left: 50%;margin-left: -50px; border-radius: 50%;">';
         } else {
-            oneLuckyWinnerHtml += '<img src="assets/img/default-avatar.png" height="100px" width="100px" style="position: relative;left: 50%;margin-left: -50px;">';
+            oneLuckyWinnerHtml += '<img src="assets/img/default-avatar.png" height="100px" width="100px" style="position: relative;left: 50%;margin-left: -50px; border-radius: 50%;">';
         }
         oneLuckyWinnerHtml += '<h3 style="text-align: center">' + data.member.name + '</h3>';
         oneLuckyWinnerHtml += '</div>';
 
-        var generateOneResult = document.getElementById('generate-one-result');
         generateOneResult.innerHTML = '';
         generateOneResult.innerHTML = oneLuckyWinnerHtml;
     });
