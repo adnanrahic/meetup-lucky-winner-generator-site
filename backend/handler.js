@@ -11,6 +11,7 @@ module.exports.generateOne = (event, context) => {
     .generateOneLuckyWinner(options)
     .then(luckyWinner => ({
       statusCode: 200,
+      headers: { 'Access-Control-Allow-Origin': '*' },      
       body: JSON.stringify(luckyWinner)
     }))
     .catch(err => ({
@@ -30,6 +31,7 @@ module.exports.generateThree = (event, context) => {
     .generateThreeLuckyWinners(options)
     .then(luckyWinners => ({
       statusCode: 200,
+      headers: { 'Access-Control-Allow-Origin': '*' },    
       body: JSON.stringify(luckyWinners)
     }))
     .catch(err => ({

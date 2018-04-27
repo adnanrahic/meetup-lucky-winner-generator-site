@@ -258,12 +258,15 @@ function debounce(func, wait, immediate) {
 
 
 // custom
-var endpoint = 'https://pzwmaw8exa.execute-api.us-east-1.amazonaws.com/dev/generate/three/sarajevo-openweb-meetup/247769521';
+var baseEndpoint = 'https://pzwmaw8exa.execute-api.us-east-1.amazonaws.com/dev/generate/three';
 
 var btnGenerateOne = document.getElementsByClassName('btn-generate-one')[0];
 btnGenerateOne.addEventListener('click', generateOne);
 function generateOne(event) {
     // call api
+    var meetupOne = document.getElementById('meetupOne');
+    var eventIdOne = document.getElementById('eventIdOne');
+    var endpoint = baseEndpoint + '?meetup=' + meetupOne.value + '&eventId=' + eventIdOne.value;
     $.get(endpoint, function (data, status) {
         console.log(data);
 
