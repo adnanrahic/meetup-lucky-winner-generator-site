@@ -26,7 +26,7 @@
 </head>
 
 <body>
-	<div class="image-container set-full-height" style="background-image: url('assets/img/wizard-book.jpg')">
+	<div class="image-container set-full-height" style="background-image: url('assets/img/wizard-profile.jpg')">
 
 		<!--   Big container   -->
 		<div class="container">
@@ -67,7 +67,7 @@
 														<u>Meetup Name</u> and
 														<u>Event ID</u> to generate a lucky winner. </h4>
 												</div>
-												<div class="col-sm-4">
+												<div class="col-sm-6 col-md-4">
 													<div class="input-group">
 														<span class="input-group-addon">
 															<i class="material-icons">home</i>
@@ -78,7 +78,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="col-sm-4">
+												<div class="col-sm-6 col-md-4">
 													<div class="input-group">
 														<span class="input-group-addon">
 															<i class="material-icons">fingerprint</i>
@@ -89,9 +89,9 @@
 														</div>
 													</div>
 												</div>
-												<div class="col-sm-4">
-													<button type="submit" class="btn btn-generate-one btn-fill btn-info btn-wd">generate</button>
-													<!-- <input type='button' class='btn btn-generate-one btn-fill btn-info btn-wd' name='generate-one' value='generate' /> -->
+												<div class="col-sm-12 col-md-4">
+													<button type="submit" class="btn btn-generate-one btn-fill btn-info">generate</button>
+													<!-- <input type='button' class='btn btn-generate-one btn-fill btn-info' name='generate-one' value='generate' /> -->
 												</div>
 											</div>
 										</form>
@@ -102,61 +102,56 @@
 										</div>
 									</div>
 									<div class="tab-pane" id="three">
-										<h4 class="info-text">What type of room would you want? </h4>
-										<div class="row">
-											<div class="col-sm-10 col-sm-offset-1">
-												<div class="col-sm-4">
-													<div class="choice" data-toggle="wizard-radio" rel="tooltip" title="This is good if you travel alone.">
-														<input type="radio" name="job" value="Design">
-														<div class="icon">
-															<i class="material-icons">weekend</i>
-														</div>
-														<h6>Single</h6>
-													</div>
+										<form name="formThree" id="formThree">
+											<div class="row">
+												<div class="col-sm-12">
+													<h4 class="info-text"> Add the
+														<u>Meetup Name</u> and
+														<u>Event ID</u> to generate the three lucky winners. </h4>
 												</div>
-												<div class="col-sm-4">
-													<div class="choice" data-toggle="wizard-radio" rel="tooltip" title="Select this room if you're traveling with your family.">
-														<input type="radio" name="job" value="Code">
-														<div class="icon">
+												<div class="col-sm-6 col-md-4">
+													<div class="input-group">
+														<span class="input-group-addon">
 															<i class="material-icons">home</i>
+														</span>
+														<div class="form-group label-floating">
+															<label class="control-label">Your Meetup</label>
+															<input id="meetupThree" name="meetupThree" type="text" class="form-control">
 														</div>
-														<h6>Family</h6>
 													</div>
 												</div>
-												<div class="col-sm-4">
-													<div class="choice" data-toggle="wizard-radio" rel="tooltip" title="Select this option if you are coming with your team.">
-														<input type="radio" name="job" value="Code">
-														<div class="icon">
-															<i class="material-icons">business</i>
+												<div class="col-sm-6 col-md-4">
+													<div class="input-group">
+														<span class="input-group-addon">
+															<i class="material-icons">fingerprint</i>
+														</span>
+														<div class="form-group label-floating">
+															<label class="control-label">Event ID</label>
+															<input id="eventIdThree" name="eventIdThree" type="number" class="form-control">
 														</div>
-														<h6>Business</h6>
 													</div>
 												</div>
+												<div class="col-sm-12 col-md-4">
+													<button type="submit" class="btn btn-generate-three btn-fill btn-info">generate</button>
+													<!-- <input type='button' class='btn btn-generate-one btn-fill btn-info' name='generate-one' value='generate' /> -->
+												</div>
+											</div>
+										</form>
+										<div class="row">
+											<div class="col-sm-12">
+												<div id="generate-three-results"></div>
 											</div>
 										</div>
 									</div>
 									<div class="tab-pane" id="how-many-you-want">
 										<div class="row">
-											<h4 class="info-text"> Drop us a small description.</h4>
-											<div class="col-sm-6 col-sm-offset-1">
-												<div class="form-group">
-													<label>Room description</label>
-													<textarea class="form-control" placeholder="" rows="6"></textarea>
-												</div>
-											</div>
-											<div class="col-sm-4">
-												<div class="form-group">
-													<label class="control-label">Example</label>
-													<p class="description">"The room really nice name is recognized as being a really awesome room. We use it every sunday when we go fishing
-														and we catch a lot. It has some kind of magic shield around it."</p>
-												</div>
-											</div>
+											<h4 class="info-text"> Coming soon...</h4>
 										</div>
 									</div>
 								</div>
 								<!-- <div class="wizard-footer">
 									<div class="pull-right">
-										<input type='button' class='btn btn-generate-one btn-fill btn-info btn-wd' name='generate-one' value='generate' />
+										<input type='button' class='btn btn-generate-one btn-fill btn-info' name='generate-one' value='generate' />
 									</div>
 									<div class="clearfix"></div>
 								</div> -->

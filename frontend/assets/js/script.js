@@ -261,19 +261,24 @@ function debounce(func, wait, immediate) {
 var baseEndpoint = 'https://pzwmaw8exa.execute-api.us-east-1.amazonaws.com/dev/generate';
 
 var formOne = document.forms[0];
-// var btnGenerateOne = document.getElementsByClassName('btn-generate-one')[0];
 formOne.addEventListener('submit', generateOne);
 function generateOne(event) {
     event.preventDefault();
     // add loading animation
     var generateOneResult = document.getElementById('generate-one-result');
     generateOneResult.innerHTML = '<img src="assets/svg/audio.svg" height="100px" width="100px" style="position: relative;left: 50%;margin-left: -50px;" />';
-    
+
     // call api
     var meetupOne = document.getElementById('meetupOne');
     var eventIdOne = document.getElementById('eventIdOne');
     var endpoint = baseEndpoint + '/one' + '?meetup=' + meetupOne.value + '&eventId=' + eventIdOne.value;
     $.get(endpoint, function (data, status) {
+        if (status !== 'success') {
+            console.log(status);
+            generateOneResult.innerHTML = '<p style="text-align: center">An error occurred, try again...</p>';
+            return;
+        }
+
         var oneLuckyWinnerHtml = '<br>';
         oneLuckyWinnerHtml += '<div class="col-sm-12">';
         oneLuckyWinnerHtml += '<p style="text-align: center">The Lucky Winner is...</p>';
@@ -290,13 +295,45 @@ function generateOne(event) {
     });
 }
 
-function generateThree() {
-    // call api
-    console.log('three');
+var formThree = document.forms[1];
+formThree.addEventListener('submit', generateThree);
+function generateThree(event) {
+    event.preventDefault();
+    // add loading animation
+    var generateThreeResults = document.getElementById('generate-three-results');
+    generateThreeResults.innerHTML = '<img src="assets/svg/audio.svg" height="100px" width="100px" style="position: relative;left: 50%;margin-left: -50px;" />';
 
-    // var oneLuckyWinnerHtml = '';
-    // var generateOneResult = document.getElementById('generate-one-result');
-    // generateOneResult.appendChild(oneLuckyWinnerHtml);
+    // call api
+    var meetupThree = document.getElementById('meetupThree');
+    var eventIdThree = document.getElementById('eventIdThree');
+    var endpoint = baseEndpoint + '/three' + '?meetup=' + meetupThree.value + '&eventId=' + eventIdThree.value;
+    $.get(endpoint, function (data, status) {
+        if (status !== 'success') {
+            console.log(status);
+            generateThreeResults.innerHTML = '<p style="text-align: center">An error occurred, try again...</p>';
+            return;
+        }
+
+        var threeLuckyWinnersHtml = '<br>';
+        threeLuckyWinnersHtml += '<div class="col-sm-12">';
+        threeLuckyWinnersHtml += '<p style="text-align: center">The Lucky Winners are...</p>';
+        threeLuckyWinnersHtml += '</div>';
+
+        data.forEach(function (item) {
+            threeLuckyWinnersHtml += '<div class="col-sm-4">';
+            if (item.member.photo) {
+                threeLuckyWinnersHtml += '<img src="' + item.member.photo.thumb_link + '" height="50px" width="50px" style="position: relative;left: 50%;margin-left: -25px; border-radius: 50%;">';
+            } else {
+                threeLuckyWinnersHtml += '<img src="assets/img/default-avatar.png" height="50px" width="50px" style="position: relative;left: 50%;margin-left: -25px; border-radius: 50%;">';
+            }
+            threeLuckyWinnersHtml += '<h3 style="text-align: center">' + item.member.name + '</h3>';
+            threeLuckyWinnersHtml += '</div>';
+        });
+
+        generateThreeResults.innerHTML = '';
+        generateThreeResults.innerHTML = threeLuckyWinnersHtml;
+    });
+
 }
 
 function generateCustom() {

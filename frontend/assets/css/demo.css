@@ -642,6 +642,14 @@ footer .pull-center {
     width: 100%;
 }
 
+.btn-generate-three {
+    width: 100%;
+}
+
+.wizard-card .wizard-header h5 {
+    margin: 5px;
+}
+
 /* media */
 
 @media (max-width: 768px) {
