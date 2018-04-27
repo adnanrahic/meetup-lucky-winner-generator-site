@@ -1,0 +1,44 @@
+service: meetup-lucky-winner-generator-backend
+
+custom:
+  secrets: ${file(secrets/secrets.json)}
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: dev
+  region: us-east-1
+  environment:
+    API_KEY: ${self:custom.secrets.API_KEY}
+  memorySize: 1024
+  usagePlan: # limit monthly invocations
+    quota:
+      limit: 10000
+      offset: 2
+      period: MONTH
+    throttle:
+      burstLimit: 200
+      rateLimit: 100
+
+functions:
+  generateOne:
+    handler: handler.generateOne
+    events:
+      - http:
+          path: generate/one/{meetup}/{eventId}
+          method: get
+          cors: true
+  generateThree:
+    handler: handler.generateThree
+    events:
+      - http:
+          path: generate/three/{meetup}/{eventId}
+          method: get
+          cors: true
+
+  # generateCustom:
+  #   handler: handler.generateCustom
+  #     - http:
+  #         path: generate/custom/{numberOfWinners}
+  #         method: get
+  #         cors: true
