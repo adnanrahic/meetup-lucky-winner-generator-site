@@ -258,7 +258,7 @@ function debounce(func, wait, immediate) {
 
 
 // custom
-var baseEndpoint = 'https://pzwmaw8exa.execute-api.us-east-1.amazonaws.com/dev/generate/three';
+var baseEndpoint = 'https://pzwmaw8exa.execute-api.us-east-1.amazonaws.com/dev/generate';
 
 var btnGenerateOne = document.getElementsByClassName('btn-generate-one')[0];
 btnGenerateOne.addEventListener('click', generateOne);
@@ -266,13 +266,22 @@ function generateOne(event) {
     // call api
     var meetupOne = document.getElementById('meetupOne');
     var eventIdOne = document.getElementById('eventIdOne');
-    var endpoint = baseEndpoint + '?meetup=' + meetupOne.value + '&eventId=' + eventIdOne.value;
+    var endpoint = baseEndpoint + '/one' + '?meetup=' + meetupOne.value + '&eventId=' + eventIdOne.value;
     $.get(endpoint, function (data, status) {
-        console.log(data);
+        var oneLuckyWinnerHtml = '<br>';
+        oneLuckyWinnerHtml += '<div class="col-sm-12">';
+        oneLuckyWinnerHtml += '<p style="text-align: center">The Lucky Winner is...</p>';
+        if (data.member.photo) {
+            oneLuckyWinnerHtml += '<img src="' + data.member.photo.thumb_link || 'assets/img/default-avatar.png' + '" height="100px" width="100px" style="position: relative;left: 50%;margin-left: -50px;">';
+        } else {
+            oneLuckyWinnerHtml += '<img src="assets/img/default-avatar.png" height="100px" width="100px" style="position: relative;left: 50%;margin-left: -50px;">';
+        }
+        oneLuckyWinnerHtml += '<h3 style="text-align: center">' + data.member.name + '</h3>';
+        oneLuckyWinnerHtml += '</div>';
 
-        // var oneLuckyWinnerHtml = '';
-        // var generateOneResult = document.getElementById('generate-one-result');
-        // generateOneResult.appendChild(oneLuckyWinnerHtml);
+        var generateOneResult = document.getElementById('generate-one-result');
+        generateOneResult.innerHTML = '';
+        generateOneResult.innerHTML = oneLuckyWinnerHtml;
     });
 }
 

@@ -11,6 +11,10 @@ module.exports.generateOne = (event, context) => {
     .generateOneLuckyWinner(options)
     .then(luckyWinner => ({
       statusCode: 200,
+      headers: {
+        "Access-Control-Allow-Origin" : "*", // Required for CORS support to work
+        "Access-Control-Allow-Credentials" : true // Required for cookies, authorization headers with HTTPS
+      },
       body: JSON.stringify(luckyWinner)
     }))
     .catch(err => ({
@@ -30,6 +34,10 @@ module.exports.generateThree = (event, context) => {
     .generateThreeLuckyWinners(options)
     .then(luckyWinners => ({
       statusCode: 200,
+      headers: {
+        "Access-Control-Allow-Origin" : "*", // Required for CORS support to work
+        "Access-Control-Allow-Credentials" : true // Required for cookies, authorization headers with HTTPS
+      },
       body: JSON.stringify(luckyWinners)
     }))
     .catch(err => ({
