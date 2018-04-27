@@ -27,14 +27,16 @@ functions:
       - http:
           path: generate/one
           method: get
-          cors: true
+          cors:
+            - enabled: true
   generateThree:
     handler: handler.generateThree
     events:
       - http:
           path: generate/three
           method: get
-          cors: true
+          cors: 
+            - enabled: true
 
   # generateCustom:
   #   handler: handler.generateCustom
