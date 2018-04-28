@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "meetup-lucky-winner-generator": "0.0.8"
+    "meetup-lucky-winner-generator": "0.0.11"
   }
 }
